@@ -1,0 +1,33 @@
+<h2>Customers List</h2>
+ 
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Charges</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+    <tbody>
+      <tr *ngFor="let customer of customers">
+        <td> {{customer.name}}</td>  
+        <td> {{customer.type}}</td>  
+        <td> {{customer.description}}</td>  
+        <td> {{getcharges(customer.id)}}  </td>  
+        <td><button inlist="true" class="btn btn-danger btn-xs" (click)="deleteCustomer(customer.id)">Delete</button>
+        <button inlist="true" class="btn btn-info btn-xs" (click)="viewCustomer(customer.id)">View</button>
+        <button  inlist="true" class="btn btn-warning btn-xs" (click)="updateCustomer(customer.id)">Update</button>
+        </td> 
+      </tr>
+    </tbody>
+</table>
+
+<div class="mainbuttons">
+<button action="right" main="true" class="btn btn-primary" (click)="addCustomer()">Add New Customer</button>
+</div>
+
+<div id="separater"></div>
+
+<router-outlet></router-outlet>

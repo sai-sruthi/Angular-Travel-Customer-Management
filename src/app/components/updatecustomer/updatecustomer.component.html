@@ -1,0 +1,103 @@
+<h3>Update Customer </h3 >
+<form class="form-horizontal" #form="ngForm" (submit)="submitForm()" novalidate>
+  <fieldset>
+  <div class="form-group"  [class.has-error] = "name.invalid && name.touched">
+      <label for="inputname" class="col-lg-2 control-label" style="float:left">Name</label>
+       <div class="col-lg-6">
+        <input  #name="ngModel" pattern="...+" required type="text" class="form-control" id="inputname" placeholder="Enter Name" name="name" [(ngModel)]="model.name">
+        <div *ngIf="name.invalid && name.touched" class="alert alert-danger">
+            Name is required and should be atleast 3 characters.
+        </div>
+        </div>
+      </div>
+<div class="form-group"[class.has-error] = "age.invalid && age.touched">
+      <label for="inputage" class="col-lg-2 control-label" style="float:left">Age</label>
+       <div class="col-lg-4">
+      <input #age="ngModel" type="number" required class="form-control" id="inputage" placeholder="Enter Age" name="age" min="18" max="120" [(ngModel)]="model.age">
+        <div *ngIf="age.invalid && age.touched" class="alert alert-danger">
+            Age is required.
+        </div>
+        </div>
+</div>
+
+<div class="form-group">
+      <label for="inputdesc" class="col-lg-2 control-label" style="float:left">Description</label>
+       <div class="col-lg-6">
+      <input type="text" class="form-control" id="inputdesc" placeholder="Enter Description" name="description" [(ngModel)]="model.description">
+       </div>
+</div>
+
+<div class="form-group" [class.has-error]="mobile.invalid && mobile.touched">
+      <label for="inputmob" class="col-lg-2 control-label" style="float:left">Mobile Number</label>
+       <div class="col-lg-4">
+      <input type="text" #mobile="ngModel" pattern="[0-9]{10}" required class="form-control" id="inputmob" placeholder="Mobile Number" name="mob" [(ngModel)]="model.mobileNo">
+        <div *ngIf="mobile.invalid && mobile.touched" class="alert alert-danger">
+            Mobile Number is required and should be 10 digits.
+        </div>
+        </div>
+</div>
+
+   <div class="form-group">
+      <label class="col-lg-2 control-label">Type</label>
+      <div class="col-lg-6">
+        <div class="radio">
+          <label>
+            <input type="radio" name="type" id="inputtype1" value="Regular" checked="" [(ngModel)]="model.type">
+            Regular
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="type" id="inputtype2" value="Corporate" [(ngModel)]="model.type"> 
+            Corporate
+          </label>
+        </div>
+      </div>
+    </div>
+
+<div class="form-group">
+      <label for="inputloyal" class="col-lg-2 control-label" style="float:left">Loyality Programme</label>
+       <div class="col-lg-2 checkbox">
+      <input type="checkbox" id="inputloyal" name="loyal" [(ngModel)]="model.loyal" style="position:relative; left:20px;">
+      </div>
+</div>
+
+
+<div class="form-group" [class.has-error] = "charges.invalid && charges.touched">
+      <label for="inputcharge" class="col-lg-2 control-label" style="float:left">Charges</label>
+       <div class="col-lg-2">
+      <input #charges="ngModel" type="number" required class="form-control" id="inputcharge" placeholder="Charges" name="charges" min="10" max="1000" [(ngModel)]="model.charges">per/km
+        <div *ngIf="charges.invalid && charges.touched" class="alert alert-danger">
+            Charges per/km are a required field.
+        </div>
+        </div>
+</div>
+
+<div class="form-group"[class.has-error] = "employees.invalid && employees.touched">
+      <label for="inputemployees" class="col-lg-2 control-label" style="float:left">No. of Employees</label>
+       <div class="col-lg-6">
+      <input #employees="ngModel" [disabled]="model.type=='Regular' ? true : null"  type="number" required class="form-control" id="inputemployees" placeholder="Employees" name="employees" min="1" [(ngModel)]="model.employees">
+        <div *ngIf="employees.invalid && employees.touched" class="alert alert-danger">
+            Number of Employees is a required field.
+        </div>
+        </div>
+</div>
+
+<div class="form-group">
+      <label for="inputdistance" class="col-lg-2 control-label" style="float:left">Distance</label>
+       <div class="col-lg-6">
+      <input type="number" class="form-control" id="inputdistance" placeholder="Distance Travelled" name="distance" [(ngModel)]="model.distance">
+      </div>
+</div>
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<!--{{model|json}}<br/>
+{{form.value|json}}-->

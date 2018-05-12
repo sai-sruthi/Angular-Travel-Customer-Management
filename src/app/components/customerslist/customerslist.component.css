@@ -1,0 +1,19 @@
+button[action="right"]{
+float: right;
+}
+.mainbuttons
+{
+    position: relative;
+}
+
+button[main="true"]{
+    margin: 10px;
+}
+button[inlist="true" ]{
+    margin-left: 2px;
+   
+}
+
+#separater{
+    height:50px;
+}
